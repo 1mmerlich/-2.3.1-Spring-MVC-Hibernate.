@@ -11,8 +11,9 @@ import orgexample.service.IUserService;
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
+
     private final IUserService userService;
+
 
     @Autowired
     public UserController(IUserService userService) {

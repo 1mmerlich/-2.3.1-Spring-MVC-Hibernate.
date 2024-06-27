@@ -11,9 +11,8 @@
         }
 
         .user-block2 {
-            margin: 0 auto;
             text-align: center;
-            margin-bottom: 10px;
+            margin: 0 auto 10px;
             transform: translate(210px, 0px);
         }
 
@@ -42,9 +41,15 @@
         <div class="user-block">
             <form th:action="@{/users/edit}" th:object="${user}" method="post">
                 <input class="edit-box" name="id" type="hidden" th:value="${user.id}"/>
-                <input class="edit-box" name="firstName" type="text" th:value="${user.firstName}"/>
-                <input class="edit-box" name="lastName" type="text" th:value="${user.lastName}"/>
-                <input class="edit-box" name="email" type="text" th:value="${user.email}"/>
+                <label>
+                    <input class="edit-box" name="firstName" type="text" th:value="${user.firstName}"/>
+                </label>
+                <label>
+                    <input class="edit-box" name="lastName" type="text" th:value="${user.lastName}"/>
+                </label>
+                <label>
+                    <input class="edit-box" name="email" type="text" th:value="${user.email}"/>
+                </label>
                 <button class="btn" type="submit">Изменить</button>
             </form>
         </div>
@@ -60,11 +65,17 @@
     <form th:method="POST" th:action="@{/users}" th:object="${newUser}">
         <div class="user-block">
             <input class="empty-field" type="hidden" th:field="*{id}" placeholder="ID"/>
-            <input class="empty-field" type="text" th:field="*{firstName}" placeholder="Имя"/>
+            <label>
+                <input class="empty-field" type="text" th:field="*{firstName}" placeholder="Имя"/>
+            </label>
             <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Error</div>
-            <input class="empty-field" type="text" th:field="*{lastName}" placeholder="Фамилия"/>
+            <label>
+                <input class="empty-field" type="text" th:field="*{lastName}" placeholder="Фамилия"/>
+            </label>
             <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error</div>
-            <input class="empty-field" type="text" th:field="*{email}" placeholder="Email"/>
+            <label>
+                <input class="empty-field" type="text" th:field="*{email}" placeholder="Email"/>
+            </label>
             <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>
             <button class="btn" type="submit">Добавить</button>
         </div>

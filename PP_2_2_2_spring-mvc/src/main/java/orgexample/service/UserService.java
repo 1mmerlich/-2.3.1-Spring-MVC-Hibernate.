@@ -10,8 +10,11 @@ import java.util.List;
 @Service
 public class UserService implements IUserService {
 
-    @Autowired
-    private IUserDao userDao;
+    private final IUserDao userDao;
+@Autowired
+    public UserService(IUserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @PostConstruct
     public void init() {

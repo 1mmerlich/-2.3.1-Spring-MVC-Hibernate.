@@ -19,7 +19,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.io.IOException;
@@ -35,11 +34,12 @@ public class WebConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
 
-    @Autowired
-    private Environment env;
+    private final Environment env;
 
-    public WebConfig(ApplicationContext applicationContext) {
+    @Autowired
+    public WebConfig(ApplicationContext applicationContext, Environment env) {
         this.applicationContext = applicationContext;
+        this.env = env;
     }
 
 
